@@ -9,9 +9,11 @@
       {
         "src": "build_files.sh",
         "use": "@vercel/static-build",
+        "rewrites": [{ "source": "/(.*)", "destination": "/" }], 
         "config": {
           "distDir": "staticfiles_build"
         }
+        
       }
     ],
     "routes": [
@@ -24,5 +26,6 @@
         "dest": "BlogApplication/wsgi.py"
       }
     ]
+     
   }
   
