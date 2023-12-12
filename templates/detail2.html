@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+    }
+
+    .card {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative; /* Relative positioning for absolute positioning inside */
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ddd;
+      position: relative; /* Establishing a positioning context for absolute positioning */
+    }
+
+    .author-name {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-size: 1em;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 5px;
+      border-radius: 4px;
+      margin: 0;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
+    .read-more {
+      color: #3498db;
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .card-date {
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% for ansh in response2.articles %}
+<div class="card">
+  <img src="{{ansh.urlToImage}}" alt="Card Image">
+  <p class="author-name">{{ansh.author}}</p>
+  <div class="card-content">
+    <h2 class="card-title">{{ansh.title}}</h2>
+    <p class="card-content">{{ansh.description}}</p>
+    <a href="{{ansh.url}}" class="read-more">Read more</a>
+    <p class="card-date">Publish Date: {{ansh.publishedAt}}</p>
+  </div>
+</div>
+{% endfor %}
+
+</body>
+</html>
